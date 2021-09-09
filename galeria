@@ -169,12 +169,6 @@
     }
     </style>
 
-
-
-
-
-
-
     <script>
         const b1 = document.querySelector('.box1')
         const b2 = document.querySelector('.box2')
