@@ -1,0 +1,210 @@
+/* CSS Variables */
+:root {
+    --primary: #ddd;
+    --dark: #333;
+    --light: #fff;
+    --shadow: 3px 3px 5px rgb(104, 104, 104 );
+}
+html {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--dark);
+}
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+body {
+    background: #ccc;
+    padding: 0px;
+    margin: 30px 50px;
+    line-height: 1.4;
+}
+a {
+    text-decoration: none;
+}
+.back {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    font-style: italic;
+    opacity: 0.3;
+    padding: 11px 22px;
+    margin: 1rem;
+    background: #666;
+    color: white;
+    font-size: 22px;
+    border-radius: 11px;
+    border: white solid 1px;
+    transition: .2s;
+}
+a:hover.back {
+    opacity: 0.7;
+}
+
+.btn {
+    background: var(--dark);
+    color: var(--light);
+    padding: 0.6rem 1.3rem;
+    text-decoration: none;
+    border: 0px;
+}
+img {
+    max-width: 100%;
+}
+.wrapper {
+    display: grid;
+    grid-gap: 20px;
+}
+/* Navigation */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    /* background-color: rgb(139, 101, 73); */
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    /* grid-template-rows: 1, 333px; */
+}
+.main-nav a {
+    background: var(--primary);
+    display: block;
+    text-decoration: none;
+    padding: 0.8rem;
+    text-align: center;
+    color: var(--dark);
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    box-shadow: var(--shadow)
+  
+}
+.main-nav a:hover {
+    background: var(--dark);
+    color: var(--light);
+}
+/* Top Container */
+.top-container {
+    display: grid;
+    grid-gap: 20px;
+    /* background-color: black; */
+    grid-template-areas: 
+    "showcase showcase top-box-a"
+    "showcase showcase top-box-b";
+}
+.showcase {
+    grid-area: showcase;
+    /* background-color: #fff; */
+    min-height: 400px;
+    background-image: url(./img/showcase.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    box-shadow: 4px 4px 5px ;
+}
+.showcase h1 {
+    font-size: 4rem;
+    margin-bottom: 0px;
+    color: var(--light);
+}
+.showcase p {
+    font-size: 1.3rem;
+    margin-top: 0px;
+    color: var(--light);
+}
+/* Top Box */
+.top-box {
+    background: var(--primary);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+.top-box .price {
+    font-size: 2.5rem;
+}
+.top-box-a {
+    grid-area: top-box-a;
+}
+.top-box-b {
+    grid-area: top-box-b;
+}
+/* boxes */
+.boxes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.box {
+    background: var(--primary);
+    text-align: center;
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow);
+}
+/* Info */
+.info {
+    background: var(--primary);
+    text-align: start;
+    padding: 3rem;
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(2, 1fr)
+}
+.info img {
+    box-shadow: 2px 2px 5px ;
+}
+/* Portfolio */
+.portfolio {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+.portfolio img {
+    width: 100%;
+    box-shadow: var(--shadow);
+}
+/* Footer */
+footer {
+    margin-top: 2rem;
+    background: var(--dark);
+    color: var(--light);
+    padding: 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+/* Media queries */
+@media (max-width: 700px) {
+    .top-container {
+        grid-template-areas: 
+        "showcase showcase"
+        "top-box-a top-box-b";
+    }
+    .showcase h1 {
+        font-size: 2.5rem;
+    }
+    .main-nav ul {
+        grid-template-columns: 1fr;
+    }
+    .info {
+        grid-template-columns: 1fr;
+    }
+    .info .btn {
+        display: block;
+        text-align: center;
+        margin: auto;
+    }
+}
+@media (max-width: 500px) {
+    .top-container {
+        grid-template-areas: 
+        "showcase"
+        "top-box-a"
+        "top-box-b";
+    }
+}
