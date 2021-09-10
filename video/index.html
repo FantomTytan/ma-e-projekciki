@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tralve landing page</title>
+</head>
+<body>
+    <a class="back" href="../Strona główna.html"><h5>Wróć do - "Strona Główna"</h5></a>
+    <section class="showcase">
+        <header>    
+            <h2 class="logo">Travel</h2>
+            <div class="toggle"></div>
+        </header>
+            <!-- <video  muted loop autoplay>
+            <source src="https://www.youtube.com/embed/atycPTJ6LWk" type="video/mp4">
+            </video>
+            <iframe src="https://www.youtube.com/embed/atycPTJ6LWk?list=PLTDgOUcX23hbEBb1yw2ySS38BC2_m-clc"></iframe> -->
+            <div class="video-container">
+                <iframe  src="https://www.youtube.com/embed/atycPTJ6LWk?controls=0 &autoplay=1&mute=1" ></iframe>
+            </div>
+            <div class="overlay">
+                <div class="text">
+                <h2>Never stop</h2>
+                <h3>Explore the world</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda inventore adipisci qui quibusdam iste. Quia corporis iure asperiores ab iste.</p>
+                <a href="#">Explore</a>
+                </div>
+            </div>
+                <ul class="social">
+                    <li><a href=""><img src="img/facebook.png" alt=""></a></li>
+                    <li><a href=""><img src="img/twitter.png" alt=""></a></li>
+                    <li><a href=""><img src="img/instagram.png" alt=""></a></li>
+                </ul>
+    </section>
+    <div class="menu">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Destination</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <script>
+        const menuToggle = document.querySelector('.toggle')
+        const menuShowcase = document.querySelector('.showcase')
+        menuToggle.addEventListener('click', ()=> {
+            menuToggle.classList.toggle('active')
+            menuShowcase.classList.toggle('active')
+        })
+    </script>
+</body>
+</html>
