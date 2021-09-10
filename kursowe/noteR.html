@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2edc832ba7.js" crossorigin="anonymous"></script>
+    <title>notes</title>
+</head>
+<style>
+    * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: rgb(243,243,243);
+}
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    height: 120px;
+}
+.menu button,
+.note-panel .save,
+.note-panel .cancel {
+    padding: 12px 25px;
+    background: none;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color .3s, color .3s;
+}
+.menu button:hover,
+.note-panel .save:hover,
+.note-panel .cancel:hover {
+    background-color: #333;
+    color: #ddd;
+}
+.icon {
+    margin-right: 10px;
+}
+.add {
+    margin-right: 20px;
+}
+.note-area {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+.note {
+    margin: 40px 20px;
+    width: 240px;
+    background-color: rgb(255,243,0);
+    border: 1px solid black;
+}
+.note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: rgba(0,0,0,.09);
+}
+.note-header .delete-note {
+    background: none;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+.note-body {
+    padding: 20px 15px;
+    font-size: 14px;
+}
+.note-panel {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px 0;
+    width: 600px;
+    background-color: #fff;
+    box-shadow: 0 0 10px black;
+    border-radius: 5px;
+}
+.note-panel h2 {
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+.note-panel label {
+    margin-bottom: 10px;
+}
+.note-panel #text,
+.note-panel #category {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    width: 100%;
+    max-width: 90%;
+    max-height: 500px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+.note-panel .error {
+    margin-bottom: 20px;
+    color: red;
+    visibility: hidden;
+}
+</style>
+<body>
+<div class="menu">
+    <h1><i class="fas fa-sticky-note"></i> My notes</h1>
+    <div class="menu-button">
+        <button class="add icon"><i class="fa fa-plus"></i> Dodaj</button>
+        <button class="delete-all icon"><i class="fa fa-trash-alt"></i> Usuń</button>
+    </div>
+</div>
+<div class="note-area">
+<div class="note-panel">
+    <h2>Dodaj notetkę</h2>
+    <label for="category">Wybierz kategorię</label>
+    <select id="category" onchange="selectValue()">
+        <option value="0" disabled selected>- wybierz opcję -</option>
+        <option value="1">Zakupy</option>
+        <option value="2">Praca</option>
+        <option value="3">Inne</option>
+    </select>
+    <label for="text">Wpisz treść notatki</label>
+    <textarea id="text"></textarea>
+    <p class="error">Uzupełnij wszystkie pola!</p>
+    <div class="panel-buttons">
+        <button class="save icon"><i class="fas fa-save"></i> Zapisz</button>
+        <button class="cancel icon"><i class="far fa-window-close"></i> Anuluj</button>
+    </div>
+</div>
+</div>
+    <script>
+        const addBtn = document.querySelector('.add')
+const saveBtn = document.querySelector('.save')
+const cancelBtn = document.querySelector('.cancel')
+const deleteBtns = document.getElementsByClassName('delete-note')
+const deleteAllBtn = document.getElementsByClassName('delete-all')
+const noteArea = document.querySelector('.note-area')
+const notePanel = document.querySelector('.note-panel')
+const category = document.querySelector('#category')
+const textArea = document.querySelector('#text')
+const error = document.querySelector('.error')
+
+let selectedValue;
+let cardId = 0;
+
+const openPanel = () => {
+    notePanel.style.display = 'flex';
+}
+const closePanel = () => {
+    notePanel.style.display = 'none';
+    error.style.visibility = 'hidden';
+    textArea.value = '';
+    category.selectedIndex = 0;
+}
+const addNote = () => {
+    if(textArea.value !=='' && category.options[category.selectedIndex].value !== '0')
+    {   createNote();
+        error.style.visibility = 'hidden';
+    } else {
+        error.style.visibility = 'visible';
+    }
+
+}
+const createNote = () => {
+    const newNote = document.createElement('div')
+    newNote.classList.add('note')
+    newNote.setAttribute('id', cardId);
+    newNote.innerHTML = `<div class="note-header">
+    <h3 class="note-title">${selectedValue}</h3>
+    <button class="delete-note" onclick="deleteNote(${cardId})">
+        <i class="fa fa-times icon"></i>
+    </button>
+</div>
+<div class="note-body"> ${textArea.value} </div>`
+    noteArea.appendChild(newNote);
+    cardId++;
+    textArea.value = ''
+    category.selectedIndex = 0;
+    notePanel.style.display = 'none';
+    chceckColor(newNote)
+}
+const selectValue = () => {
+    selectedValue = category.options[category.selectedIndex].text;
+    console.log(selectedValue);
+}
+const chceckColor = note => {
+    switch (selectedValue) {
+        case 'Zakupy':
+            note.style.background = 'rgb(72,255,0)';
+            break;
+        case 'Praca':
+            note.style.background = 'rgb(255,243,0)';
+            break;
+        case 'Inne':
+            note.style.background = 'rgb(0,170,255)';
+            break;
+    }
+}
+const deleteNote = id => {
+    const noteToDelete = document.getElementById(id)
+    noteArea.removeChild(noteToDelete)
+}
+const deleteAllNotes = () => {
+    noteArea.textContent = ''
+    console.log(33);
+}
+const kij = () => {
+    console.log('kijówka');
+    console.log(deleteAllBtn)
+}
+addBtn.addEventListener('click', openPanel)
+cancelBtn.addEventListener('click', closePanel)
+saveBtn.addEventListener('click', addNote)
+deleteAllBtn.addEventListener('click', deleteAllNotes)
+
+    </script>
+</body>
+
+</html>

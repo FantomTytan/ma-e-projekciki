@@ -1,0 +1,52 @@
+* {
+    /* background-color: blanchedalmond; */
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+html {
+    background-color: thistle;
+    /* animation: koko 10s infinite; */
+
+}
+#demo {
+    border: rgb(28, 10, 46) solid 2px;
+    border-radius: 6px;
+    padding: 25px 35px;
+    line-height: 52px;
+    width:fit-content;
+    margin: 20% auto;
+    box-shadow: 2px 2px 10px black;
+    background-color: rgb(211, 211, 211);
+    color:rgb(81, 82, 83);
+    text-transform: capitalize;
+    transition: 0.1s;
+   
+    text-align: center;
+}
+#demo:hover {
+    box-shadow: 2px 2px 25px black;
+    /* padding: 4px 22px; */
+    font-size: 2.1em;
+    color:black;
+    border: black solid 3px;
+    text-shadow: 0 0 7px gray;
+    cursor: pointer;
+    animation: koko 0.5s infinite;
+}
+.g {
+    display: inline;
+}
+.g:hover {
+    color: blanchedalmond;
+}
+.g:active {
+    color: rgb(240, 192, 120);
+}
+@keyframes koko {
+    0% {background-color: rgb(243, 202, 155);}
+    25% {background-color: rgb(194, 197, 5);}
+    50% {background-color: rgb(127, 149, 197);}
+    75% {background-color: rgb(212, 99, 188);}
+    100% {background-color: rgb(243, 202, 155);}
+}

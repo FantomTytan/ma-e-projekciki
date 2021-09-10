@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator wydatków</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="dolist.css">
+    <script src="https://kit.fontawesome.com/327a0d490c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a class="back" href="../Strona główna.html">Strona Główna</a>
+    <div class="todo">
+        <div class="header">
+            <h1>todo list</h1>
+            <input type="text" class="todo-input" placeholder="Wpisz treść zadania...">
+            <button class="add-btn">Add</button>
+        </div>
+        <div class="todo-list">
+            <h3>Lista zadań:</h3>
+            <p class="alert-info">Brak zadań na liście</p>
+            <ul></ul>
+        </div>
+    </div>
+    <div class="popup">
+        <h3>Edytuj zadanie</h3>
+        <div class="popup-body">
+            <p class="popup-info"></p>
+            <input type="text" class="popup-input" placeholder="Wpisz nową treść zadania...">
+            <button class="popup-btn accept">Zatwierdź</button>
+            <button class="popup-btn cancel">Anuluj</button>
+        </div>
+    </div>
+
+    <script src="dolist.js"></script>
+</body>
+
+</html>

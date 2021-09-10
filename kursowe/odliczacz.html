@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator wydatków</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,700&display=swap&subset=latin-ext"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="odliczacz.css">
+    <script src="https://kit.fontawesome.com/327a0d490c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <a class="back" href="../Strona główna.html">Strona Główna</a>
+   <div class="counter-app">
+
+    <div class="settings active">
+        <h1>ustawienia</h1>
+
+        <label for="event-name">Nazwa wydarzenia:</label>
+        <input type="text" id="event-name" value="Nowy rok">
+        <table class="date">
+            <tr>
+                <td><label for="event-day">Dzień</label></td>
+                <td><label for="event-month">Miesiąc</label></td>
+                <td><label for="event-year">Rok</label></td>
+            </tr>
+            <tr>
+                <td><input type="number" id="event-day" maxlength="2" value="31"></td>
+                <td><input type="number" id="event-month" maxlength="2" value="12"></td>
+                <td><input type="number" id="event-year" maxlength="4" value="2021"></td>
+            </tr>
+        </table>
+        <label for="event-image">Link do obrazka</label>
+        <input type="text" id="event-image" value="img/default.jpeg">
+        <button class="save">Zapisz</button>
+    </div>    
+        <div class="app-body">
+            <div class="image-section">
+                <div class="settings-btn">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+            </div>
+            <div class="time-section">
+                <h3><span class="event">Nowy rok</span> za:</h3>
+                <div class="time-cards">
+                    <div class="card">
+                        <p class="days-count number">1</p>
+                        <p class="card-title">dni</p>
+                    </div>
+                    <div class="card">
+                        <p class="hours-count number">1</p>
+                        <p class="card-title">Godzin</p>
+                    </div>
+                    <div class="card">
+                        <p class="minutes-count number">1</p>
+                        <p class="card-title">Minut</p>
+                    </div>
+                    <div class="card">
+                        <p class="seconds-count number">1</p>
+                        <p class="card-title">Sekund</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   </div>
+
+    <script src="odliczacz.js"></script>
+</body>
+
+</html>

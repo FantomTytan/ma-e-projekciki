@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="notes.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300&display=swap"
+        rel="stylesheet">
+    <script src="https://kit.fontawesome.com/2edc832ba7.js" crossorigin="anonymous"></script>
+    <title>stoper</title>
+</head>
+
+<body>
+    <a class="back" href="../Strona główna.html">Strona Główna</a>
+<div class="menu">
+    <h1><i class="fas fa-sticky-note"></i> My notes</h1>
+    <div class="menu-button">
+        <button class="add icon"><i class="fa fa-plus"></i> Dodaj</button>
+        <button class="delete-all icon"><i class="fa fa-trash-alt"></i> Usuń</button>
+    </div>
+</div>
+<div class="note-area">
+<div class="note-panel">
+    <h2>Dodaj notetkę</h2>
+    <label for="category">Wybierz kategorię</label>
+    <select id="category" onchange="selectValue()">
+        <option value="0" disabled selected>- wybierz opcję -</option>
+        <option value="1">Zakupy</option>
+        <option value="2">Praca</option>
+        <option value="3">Inne</option>
+    </select>
+    <label for="text">Wpisz treść notatki</label>
+    <textarea id="text"></textarea>
+    <p class="error">Uzupełnij wszystkie pola!</p>
+    <div class="panel-buttons">
+        <button class="save icon"><i class="fas fa-save"></i> Zapisz</button>
+        <button class="cancel icon"><i class="far fa-window-close"></i> Anuluj</button>
+    </div>
+</div>
+</div>
+    <script src="notes.js"></script>
+</body>
+
+</html>
