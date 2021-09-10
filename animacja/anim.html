@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation</title>
+</head>
+<body>
+  <style>
+    * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(43, 85, 141);
+    color: #fff;
+    line-height: 1.6;
+    text-align: center;
+}
+.container {
+    max-width: 960px;
+    margin: auto;
+    padding: 0 30px;
+    position: relative;
+    animation-name: con;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+.back {
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    font-style: italic;
+    opacity: 0.3;
+    text-decoration: none;
+    padding: 11px 22px;
+    margin: 1rem;
+    background: #666;
+    color: white;
+    font-size: 22px;
+    border-radius: 11px;
+    border: white solid 1px;
+    transition: .2s;
+}
+a:hover.back {
+    opacity: 0.7;
+}
+
+.showcase {
+    height: 300px;
+}
+.showcase h1 {
+    font-size: 50px;
+    line-height: 1.3;
+    position: relative;
+    animation: hed;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+#btn {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border: 1px solid white;
+    margin-top: 40px;
+    opacity: 0;
+    animation: btn 3s 2s forwards;
+    transition: 1s;
+}
+#btn:hover {
+    transform: rotateY(180deg);
+}
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 490px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4); 
+  }
+  .modal-content {
+    position: relative;
+    background-color: rgb(43, 85, 141);
+    opacity: 0.9;
+    margin: auto;
+    padding: 40px;
+    border: 2px solid rgb(29, 17, 17);
+    border-radius: 22px;
+    width: 50%;
+  }
+  .modal-content:hover {
+    animation: my 4s infinite;
+  }
+  .modal-content p {
+      font-size: 32px;
+      color: #fcfcfc;
+  }
+  .close {
+    color: #aaaaaa;
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    right: 21px;
+    top: 6px;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+/* .box {
+    background-color: cornsilk;
+    width: 222px;
+    height: 222px;
+    position: relative;
+    animation-name: my;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+.box1 {
+    background-color: cornsilk;
+    width: 333px;
+    height: 333px;
+    position: relative;
+    margin: 222px auto;
+    transition: 1s;
+}
+.box1:hover { 
+background-color: cyan;
+border-radius: 50%;
+box-shadow: 1px 1px 31px black;
+transform: rotateY(180deg);
+}*/
+@keyframes my {
+    0% {background-color: rgb(87, 47, 2);}
+    25% {background-color: rgb(194, 197, 5);}
+    50% {background-color: rgb(80, 97, 6);}
+    75% {background-color: rgb(245, 116, 10);}
+    100% {background-color: rgb(87, 47, 2);}
+}
+@keyframes hed {
+    0% {top: -50px;}
+    100% {top: 200px;}
+}
+@keyframes con {
+    0% {left: -1000px;}
+    100% {left: 0;}
+}
+@keyframes btn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+  </style>
+  <a class="back" href="../Strona główna.html"><h5>Strona Główna</h5></a>
+    <!-- <div class="box2"></div> -->
+    <header class="showcase">
+        <h1>Animacje Przejścia i Modale</h1>
+    </header>
+    <div id="content" class="container">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia iusto reiciendis enim facere alias sint ipsa recusandae fugiat, eligendi, eum blanditiis incidunt nam nihil rerum cum. Fugit ab dolore magnam illo fugiat nisi?
+    </div>
+    <a href="#" id="btn">guzik</a>
+    
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Przykładowy Modal. <br> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, ut deleniti!</p>
+        </div>    
+    </div>
+    
+    <script>
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("btn");       
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+        </script>
+</body>
+</html>
