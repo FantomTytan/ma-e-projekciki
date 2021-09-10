@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria</title>
+</head>
+
+<body>
+    <a class="back" href="../Strona główna.html">Strona Główna</a>
+    <h1 class="title">--- Masz tu galerie w CSS GRID z JS Masta ---</h1>
+
+    <div class="galeria">
+
+        <div class="box1 image"></div>
+
+        <div class="box2 image"></div>
+
+        <div class="box3 image"></div>
+
+        <div class="box4 image"></div>
+
+        <div class="box5 image"></div>
+
+        <div class="box6 image"></div>
+
+    </div>
+
+    <div class="blank">
+        <div class="container">
+            <button onclick="leftClick(slide)"> <img src="arrow2.png" class="left arr"> </button>
+            <button onclick="rightClick(slide)"> <img src="arrow.png" class="right arr"> </button>
+        </div>
+    </div>
+
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: rgb(231, 230, 230);
+            height: 100vh;
+        }
+
+        .title {
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .galeria {
+            width: 90vw;
+            height: 670px;
+            margin: 0 auto;
+            background-color: rgb(206, 206, 206);
+            outline: 8px solid #514d68;
+            padding: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-gap: 10px;
+        }
+
+        button {
+            border: none;
+            background: none;
+        }
+
+        .image {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #000;
+            border-radius: 4px;
+            place-self: center;
+            transition: .3s;
+            cursor: pointer;
+            z-index: 3;
+            background-size: cover;
+        }
+
+        .image:hover {
+            transform: scale(1.04);
+            filter: brightness(1.2);
+        }
+
+        .blank {
+            opacity: 0;
+            position: absolute;
+            top: 0%;
+            width: 100%;
+            height: 110vh;
+            background-color: rgba(0, 0, 0, .7);
+            z-index: -1;
+            transition: .3s;
+        }
+
+        .container {
+            background-position: bottom;
+            background-size: cover;
+            background-repeat: no-repeat;
+            width: 70vw;
+            height: 85vh;
+            margin: 5% auto;
+            border-radius: 30px;
+            border: 5px solid rgba(255, 255, 255, .5);
+            position: fixed;
+            left: 15%;
+        }
+
+        .back {
+            position: fixed;
+            right: 0px;
+            top: 0px;
+            font-style: italic;
+            text-decoration: none;
+            opacity: 0.3;
+            padding: 11px 22px;
+            margin: 1rem;
+            background: #666;
+            color: white;
+            font-size: 22px;
+            border-radius: 11px;
+            border: white solid 1px;
+            transition: .2s;
+        }
+
+        .back:hover {
+            opacity: 0.7;
+        }
+
+        .arr {
+            transition: .3s;
+            opacity: 1;
+            width: 110px;
+            cursor: pointer;
+            top: 43%;
+            position: absolute;
+            z-index: 17;
+            filter: invert(1);
+            transition: .3s;
+        }
+
+        .left {
+            left: -15%;
+        }
+
+        .right {
+            right: -15%;
+        }
+
+        .left:hover,
+        .right:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 2px rgb(0, 0, 0)) invert(1);
+        }
+
+        .left:active,
+        .right:active {
+            opacity: .6;
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 2px rgb(0, 0, 0)) invert(1);
+        }
+
+        @media (max-width: 900px) {
+
+            .galeria {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                grid-gap: 10px;
+            }
+
+            .arr {
+                width: 60px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .galeria {
+                grid-template-columns: repeat(1, 1fr);
+                grid-template-rows: repeat(6, 1fr);
+                grid-gap: 10px;
+            }
+
+            .galeria {
+                height: 1970px;
+            }
+
+            .arr {
+                width: 50px;
+            }
+        }
+    </style>
+
+
+
+
+
+
+
+    <script>
+        const b1 = document.querySelector('.box1')
+        const b2 = document.querySelector('.box2')
+        const b3 = document.querySelector('.box3')
+        const b4 = document.querySelector('.box4')
+        const b5 = document.querySelector('.box5')
+        const b6 = document.querySelector('.box6')
+
+        const l = document.querySelector('.left')
+        const r = document.querySelector('.right')
+
+        const galeria = document.querySelector('.galeria')
+        const empty = document.querySelector('.blank')
+        const con = document.querySelector('.container')
+
+        let slide;
+
+        let im1 = "url('https://i.insider.com/5d23a4e021a861074807aa86?width=750&format=jpeg&auto=webp')"
+        let im2 = "url('https://f4fcdn.eu/wp-content/uploads/2019/03/Toskania.jpg')"
+        let im3 = "url('https://www.savoirflair.com/wp-content/uploads/2021/04/embedded4893753-scaled.jpg?x88026')"
+        let im4 = "url('https://i.redd.it/01zjldzy4b731.jpg')"
+        let im5 =
+            "url('https://www.pandotrip.com/wp-content/uploads/2016/05/Uma-Photo-by-COMO-Hotels-and-Resorts3.jpg')"
+        let im6 = "url('https://www.goforworld.com/wp-content/uploads/2017/09/vik_iceland.jpg')"
+
+        b1.style.backgroundImage = im1;
+        b2.style.backgroundImage = im2;
+        b3.style.backgroundImage = im3;
+        b4.style.backgroundImage = im4;
+        b5.style.backgroundImage = im5;
+        b6.style.backgroundImage = im6;
+
+        function leftClick(num) {
+            num--;
+
+            boom(num);
+
+            if (num > 0) {
+                slide = num;
+            } else {
+                slide = 7;
+                leftClick(slide);
+            }
+
+        }
+
+
+        function rightClick(num) {
+
+            num++;
+
+            boom(num);
+
+            if (num <= 6) {
+                slide = num;
+            } else {
+                slide = 0;
+                rightClick(slide);
+            }
+
+        }
+
+        function openBlank() {
+            empty.style.opacity = '1';
+            empty.style.zIndex = '3';
+        }
+
+
+        function boom(element) {
+
+            if (element === 1) {
+                con.style.backgroundImage = im1;
+                slide = 1;
+            } else if (element === 2) {
+                con.style.backgroundImage = im2;
+                slide = 2;
+            } else if (element === 3) {
+                con.style.backgroundImage = im3;
+                slide = 3;
+            } else if (element === 4) {
+                con.style.backgroundImage = im4;
+                slide = 4;
+            } else if (element === 5) {
+                con.style.backgroundImage = im5;
+                slide = 5;
+            } else if (element === 6) {
+                con.style.backgroundImage = im6;
+                slide = 6;
+            }
+
+            openBlank();
+        }
+
+        const closeSlides = (e) => {
+            if (e.target != con) {
+                empty.style.opacity = '0';
+                empty.style.zIndex = '-1';
+            }
+        }
+
+        const arrows = () => {
+            if (event.keyCode === 37) {
+                leftClick(slide)
+            }
+            if (event.keyCode === 39) {
+                rightClick(slide)
+            }
+        }
+
+        b1.addEventListener('click', () => boom(1));
+        b2.addEventListener('click', () => boom(2));
+        b3.addEventListener('click', () => boom(3));
+        b4.addEventListener('click', () => boom(4));
+        b5.addEventListener('click', () => boom(5));
+        b6.addEventListener('click', () => boom(6));
+        window.addEventListener('click', closeSlides, {
+            capture: true
+        });
+        empty.addEventListener('keyup', arrows);
+    </script>
+</body>
+
+</html>
