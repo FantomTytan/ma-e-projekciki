@@ -79,7 +79,7 @@
         </div>
     </body>
 
-    <style>
+        <style>
         * {
             margin: 0;
             padding: 0;
@@ -87,7 +87,9 @@
         }
 
         body {
-            background-color: rgb(190, 190, 190);
+            background-image: linear-gradient(-315deg, #6d5fad 0%, #3a459c 50%, #5f6ead 100%);
+            background-position: cover;
+            background-attachment: fixed;
         }
 
         .wrapper {
@@ -100,22 +102,19 @@
 
         .container {
             margin: auto;
-            /* margin-top: 10%; */
-            padding: 11px;
-            background-color: rgba(240, 221, 160, 0.338);
-            width: 50%;
+            padding: 31px;
+            background-color: #29316180;
+            width: 65%;
             text-align: center;
             display: flex;
             justify-content: space-around;
             border-radius: 11px;
-            border: 2px solid rgb(158, 103, 19);
-            transition: background-color, box-shadow .3s;
+            box-shadow: 0 0 10px rgba(58, 53, 45, .5);
+            transition: background-color .3s;
         }
 
         .container:hover {
-            box-shadow: 0 0 10px rgb(58, 53, 45);
-            background-color: rgba(240, 221, 160, 0.438);
-
+            background-color: #293161bd
         }
 
         ul {
@@ -125,30 +124,40 @@
 
         a {
             text-decoration: none;
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bolder;
             text-transform: uppercase;
-            color: black;
-
+            color: #9eadd3;
         }
 
         a:hover {
-            color: rgb(255, 244, 228);
-            text-shadow: 0 0 10px rgb(58, 53, 45);
+            color: #e7eeff;
+            text-shadow: 0 0 20px #9eadd3;
         }
 
         p {
-            font-size: 22px;
-            color: black;
+            font-size: 20px;
+            color: #9eadd3;
         }
 
         h1 {
-            text-decoration: underline;
-            margin: 0;
-            padding: 0;
+            text-transform: uppercase;
+            font-size: 35px; 
+            color: #9eadd3;
+        }
+        .container h1 {
+            font-size: 28px;
+            letter-spacing: 6px;
+            border-bottom: #9eadd3 solid 3px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            /* border-radius: 30px; */
+            /* background-color: #293161bd; */
         }
 
         .hed {
+            text-shadow: 0 0 10px #293161;
             text-decoration: none;
             text-transform: uppercase;
             font-size: 93px;
